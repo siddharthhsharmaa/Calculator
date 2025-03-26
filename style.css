@@ -1,55 +1,125 @@
-*{
+:root {
+    --primary-color: #fb7c14; /* Main accent color (Orange) */
+    --operator-color: #6dee0a; /* Green color for operators */
+    --background-dark: #0a0a0a; /* Dark background */
+    --background-light: #3a4452; /* Light gradient color */
+    --button-bg: transparent; /* Button background */
+    --button-hover-shadow: rgba(0, 0, 0, 0.3); /* Button hover shadow */
+    --input-bg: transparent; /* Input background */
+    --text-color: #ffffff; /* White text color */
+    --border-color: rgba(113, 115, 119, 0.5); /* Light border color */
+    --shadow-soft: rgba(0, 0, 0, 0.1); /* Soft shadow for buttons */
+    --shadow-deep: rgba(0, 0, 0, 0.7); /* Deep shadow for hover and active states */
+    --btn-hover-bg: rgba(255, 255, 255, 0.05); /* Button hover background */
+}
+
+/* Reset default margin and padding */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-}
-body{
-width: 100%;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-background: linear-gradient(45deg,#0a0a0a,#3a4452);
-}
-.calculator{
-border: 1px solid #717377;
-padding: 20px;
-border-radius: 16px;
-background: transparent;
-box-shadow: 0px 3px 15px rgba(113,115,119,0.5);
-}
-input{
-    width:320px;
-    border: none;
-    padding: 24px;
-    margin: 10px;
-    background: transparent;
-    box-shadow: 0px 3px 15px rgbs(84,84,84,0.1);
-    font-size: 40px;
-    text-align: right;
-    cursor: pointer;
-    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
 }
 
-input::placeholder{
-    color: #ffffff;
-} 
-button{
-border: none;
-width: 60px;   
-height: 60px;
-margin: 10px; 
-border-radius: 50%;
-background: transparent;
-color: #ffffff;
-font-size: 20px;
-box-shadow: -8px -8px 15px rgba(255,255,255,0.1);
-cursor: pointer;
+/* Body Styling */
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, var(--background-dark), var(--background-light));
+    overflow: hidden; /* Prevent body overflow */
 }
-.equalbtn{
- background-color : #fb7c14;   
+
+/* Calculator Container */
+.calculator {
+    width: 400px;
+    padding: 20px;
+    background: var(--button-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 3px 10px var(--shadow-soft), 0px 5px 15px var(--shadow-deep), 0px 10px 50px rgba(0, 0, 0, 0.3);
+    /* Combining multiple layers of shadows for a deep 3D effect */
+    transition: box-shadow 0.3s ease;
 }
-.operator{
-color: #6dee0a;
+
+/* Input Styling */
+input {
+    width: 100%;
+    border: none;
+    padding: 24px;
+    margin: 10px 0;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 40px;
+    text-align: right;
+    border-radius: 12px;
+    box-shadow: 0px 3px 10px rgba(84, 84, 84, 0.1), inset 0px 0px 8px rgba(255, 255, 255, 0.2);
+    transition: box-shadow 0.3s ease-in-out, background-color 0.2s ease;
+}
+
+/* Focused Input */
+input:focus {
+    outline: none;
+    box-shadow: 0px 3px 25px rgba(84, 84, 84, 0.3), inset 0px 0px 8px rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1); /* Light background when focused */
+}
+
+/* Placeholder Styling */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Placeholder text color */
+}
+
+/* Button Styling */
+button {
+    border: none;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 20px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 8px 8px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.1s ease-in-out;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    box-shadow: 2px 2px 10px var(--button-hover-shadow), -2px -2px 8px rgba(255, 255, 255, 0.1);
+    background-color: var(--btn-hover-bg); /* Light background on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Active button effect */
+button:active {
+    transform: scale(0.95); /* Button shrinks on click */
+    box-shadow: inset 2px 2px 8px rgba(255, 255, 255, 0.2), inset -2px -2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Equal button styling */
+.equalbtn {
+    background-color: var(--primary-color);
+    box-shadow: 0px 4px 12px rgba(251, 124, 20, 0.4), 0px 6px 25px var(--shadow-deep);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Hover effect for equal button */
+.equalbtn:hover {
+    background-color: #e66e11; /* Darker orange on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Operator button styling */
+.operator {
+    color: var(--operator-color);
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+/* Hover effect for operator buttons */
+.operator:hover {
+    color: #4cbb2c; /* Lighter green on hover */
 }
